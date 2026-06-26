@@ -1,0 +1,104 @@
+.about {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(4.5rem, 9vw, 7.5rem) var(--gutter);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.lead {
+  margin-top: 1.4rem;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  max-width: 18ch;
+}
+
+.body {
+  margin-top: 1.25rem;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.4vw, 1.08rem);
+  line-height: 1.68;
+  max-width: 56ch;
+}
+
+/* ---- spec sheet (device datasheet) ---- */
+.spec {
+  position: sticky;
+  top: 88px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--panel) 0%, var(--ink) 130%);
+  overflow: hidden;
+}
+
+.specHead {
+  display: flex;
+  align-items: center;
+  gap: 0.7ch;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.specDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--signal);
+  box-shadow: 0 0 10px var(--signal);
+}
+
+.specList {
+  margin: 0;
+}
+
+.specRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.9rem 1.1rem;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.specRow:last-child {
+  border-bottom: none;
+}
+
+.specRow dt {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.specRow dd {
+  margin: 0;
+  text-align: right;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+@media (max-width: 860px) {
+  .inner {
+    grid-template-columns: 1fr;
+  }
+  .spec {
+    position: static;
+  }
+}

@@ -1,0 +1,149 @@
+.section {
+  position: relative;
+}
+
+.inner {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(4.5rem, 9vw, 7.5rem) var(--gutter);
+}
+
+.rail {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: clamp(1rem, 3vw, 2.2rem);
+  padding-bottom: clamp(2.4rem, 5vw, 3.6rem);
+}
+
+.entry:last-child {
+  padding-bottom: 0;
+}
+
+/* the connecting rail line */
+.marker {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.marker::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  bottom: -100%;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--line), var(--line-soft));
+  transform: translateX(-50%);
+}
+
+.entry:last-child .marker::before {
+  display: none;
+}
+
+.node {
+  position: relative;
+  z-index: 1;
+  width: 13px;
+  height: 13px;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 2px solid var(--signal);
+  box-shadow: 0 0 0 4px rgba(255, 176, 0, 0.08), 0 0 14px rgba(255, 176, 0, 0.4);
+}
+
+.card {
+  padding-top: 0;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--signal);
+  border: 1px solid var(--signal-line);
+  border-radius: 3px;
+  padding: 0.2rem 0.5rem;
+  background: var(--signal-glow);
+}
+
+.period {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: var(--faint);
+}
+
+.role {
+  margin-top: 0.85rem;
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  letter-spacing: -0.02em;
+}
+
+.company {
+  margin-top: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+.dot {
+  color: var(--signal);
+}
+
+.loc {
+  color: var(--faint);
+}
+
+.points {
+  margin: 1.2rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.7rem;
+  max-width: 70ch;
+}
+
+.points li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+.points li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--signal);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 560px) {
+  .entry {
+    grid-template-columns: 22px 1fr;
+    gap: 1rem;
+  }
+  .node {
+    width: 11px;
+    height: 11px;
+  }
+}

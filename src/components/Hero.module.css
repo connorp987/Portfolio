@@ -1,0 +1,220 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 96px var(--gutter) 64px;
+}
+
+/* darken the left third so type stays legible over the node field */
+.fade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    var(--ink) 18%,
+    rgba(12, 15, 20, 0.82) 42%,
+    rgba(12, 15, 20, 0.2) 72%,
+    transparent 100%
+  );
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7ch;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  padding: 0.45rem 0.95rem;
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--signal);
+  box-shadow: 0 0 0 0 var(--signal-line);
+  animation: pulse 2.4s var(--ease) infinite;
+}
+
+.statusText {
+  color: var(--muted);
+}
+
+.kicker {
+  margin-top: 1.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.headline {
+  margin-top: 1rem;
+  font-size: clamp(2.6rem, 7.5vw, 5.6rem);
+  font-weight: 900;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  max-width: 16ch;
+}
+
+.mark {
+  color: var(--signal);
+  position: relative;
+  white-space: nowrap;
+}
+
+.mark::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.06em;
+  height: 0.5em;
+  background: var(--signal-glow);
+  z-index: -1;
+  transform: skewX(-8deg);
+}
+
+.lead {
+  margin-top: 1.7rem;
+  max-width: 52ch;
+  font-size: clamp(1.02rem, 1.6vw, 1.22rem);
+  color: var(--muted);
+  line-height: 1.62;
+}
+
+.lead strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.actions {
+  margin-top: 2.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.spec {
+  margin-top: 2.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9ch;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.spec i {
+  color: var(--signal);
+  font-style: normal;
+}
+
+.scroll {
+  position: absolute;
+  bottom: 1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.scrollLine {
+  width: 1px;
+  height: 38px;
+  background: linear-gradient(to bottom, var(--signal), transparent);
+  animation: drop 2.2s var(--ease) infinite;
+  transform-origin: top;
+}
+
+/* ---- entrance choreography ---- */
+.in1,
+.in2,
+.in3,
+.in4,
+.in5,
+.in6 {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: rise 0.85s var(--ease-out) forwards;
+}
+.in1 { animation-delay: 0.1s; }
+.in2 { animation-delay: 0.24s; }
+.in3 { animation-delay: 0.36s; }
+.in4 { animation-delay: 0.52s; }
+.in5 { animation-delay: 0.66s; }
+.in6 { animation-delay: 0.8s; }
+
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 var(--signal-line); }
+  70% { box-shadow: 0 0 0 8px rgba(255, 176, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 176, 0, 0); }
+}
+
+@keyframes drop {
+  0% { transform: scaleY(0); opacity: 0; }
+  40% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(1) translateY(38px); opacity: 0; }
+}
+
+@media (max-width: 760px) {
+  .scroll {
+    display: none;
+  }
+  .fade {
+    background: linear-gradient(
+      180deg,
+      var(--ink) 6%,
+      rgba(12, 15, 20, 0.7) 40%,
+      rgba(12, 15, 20, 0.55) 100%
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .in1, .in2, .in3, .in4, .in5, .in6 {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .dot,
+  .scrollLine {
+    animation: none;
+  }
+}

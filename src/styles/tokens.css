@@ -1,0 +1,39 @@
+:root {
+  /* ---- Surface / ink ---- */
+  --ink: #0c0f14;
+  --ink-2: #0a0d11;
+  --panel: #141a22;
+  --panel-2: #1a222c;
+  --panel-3: #202a35;
+  --line: #28333f;
+  --line-soft: #1c242d;
+
+  /* ---- Text ---- */
+  --text: #e8ecf1;
+  --muted: #97a3b2;
+  --faint: #5d6a79;
+
+  /* ---- Signal (the one bold color: scanner-LED amber) ---- */
+  --signal: #ffb000;
+  --signal-bright: #ffc23d;
+  --signal-deep: #c47f00;
+  --signal-glow: rgba(255, 176, 0, 0.16);
+  --signal-line: rgba(255, 176, 0, 0.32);
+
+  /* ---- Type ---- */
+  --font-display: "Archivo", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Code", monospace;
+
+  /* ---- Layout ---- */
+  --maxw: 1160px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --radius: 4px;
+  --radius-lg: 8px;
+
+  /* ---- Motion ---- */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  color-scheme: dark;
+}
