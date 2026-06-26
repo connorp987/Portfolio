@@ -4,3 +4,8 @@ dist-ssr
 *.local
 .DS_Store
 .vite
+
+# Source résumé PDFs at repo root still contain a phone number — keep them OUT
+# of the public repo. The redacted copy the site serves lives in public/.
+/Connor_Plunkett.pdf
+/Connor_Plunkett_Resume.docx.pdf
